@@ -14,7 +14,7 @@
 <div id="wrapper">
     <nav class="navbar header-top fixed-top navbar-expand-lg  navbar-dark bg-dark">
       <div class="container">
-      <a class="navbar-brand" href="#">LOGO</a>
+      <a class="navbar-brand" href="#">WELL BEING</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText"
         aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -23,7 +23,7 @@
       <div class="collapse navbar-collapse" id="navbarText">
         <ul class="navbar-nav side-nav" >
           <li class="nav-item">
-            <a class="nav-link" style="margin-left: 20px;" href="../index.php">Home
+            <a class="nav-link" style="margin-left: 20px;" href="../index.php">Accueil
               <span class="sr-only">(current)</span>
             </a>
           </li>
@@ -34,10 +34,13 @@
             <a class="nav-link" href="../hotels-admins/show-hotels.php" style="margin-left: 20px;">Hotels</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../rooms-admins/show-rooms.php" style="margin-left: 20px;">Rooms</a>
+            <a class="nav-link" href="../rooms-admins/show-rooms.php" style="margin-left: 20px;">Chambres</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../bookings-admins/show-bookings.php" style="margin-left: 20px;">Bookings</a>
+            <a class="nav-link" href="../bookings-admins/show-bookings.php" style="margin-left: 20px;">Reservation</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../service/VoirService.php" style="margin-left: 20px;">Service</a>
           </li>
         </ul>
         <ul class="navbar-nav ml-md-auto d-md-flex">
@@ -48,7 +51,9 @@
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link  dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              username
+              <?php
+              echo $_SESSION['nom_admin'];
+              ?>
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="#">Logout</a>

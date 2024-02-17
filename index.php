@@ -33,7 +33,7 @@ require "client/header.php";
 						<div class="d-block services-wrap text-center">
 							<div class="img" style="background-image: url(images/services-1.jpg);"></div>
 							<div class="media-body py-4 px-3">
-								<h3 class="heading">Sheraton <?php echo $hotel->nom_hotel ?></h3>
+								<h3 class="heading"> <?php echo $hotel->nom_hotel ?></h3>
 								<p><?php echo $hotel->description_hotel ?></p>
 								<p>Lieu: <?php echo $hotel->localisation_hotel ?></p>
 								<p><a href="roomHotel.php?id=<?php echo $hotel->id ?>" class="btn btn-primary">Voir les chambres</a></p>
@@ -69,17 +69,17 @@ require "client/header.php";
 			?>
 					<div class="col-lg-6">
 						<div class="room-wrap d-md-flex">
-							<a href="#" class="img" style="background-image: url(<?php echo $img[array_rand($img)] ?>);"></a>
+							<a href="#" class="img" style="background-image: url(images/<?php echo $img[array_rand($img)] ?>);"></a>
 							<div class="half left-arrow d-flex align-items-center">
 								<div class="text p-4 p-xl-5 text-center">
 									<p class="star mb-0"><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span></p>
 									<p class="mb-0"><span class="price mr-1"> <?php echo $chambre->prix_nuit; ?> FCFA </span> <span class="per">Par Nuit</span></p>
 									<h3 class="mb-3"><a href="room-single.php?id=<?php echo $chambre->id_chambre; ?>"><?php echo $chambre->type_chambre; ?></a></h3>
 									<ul class="list-accomodation">
-										<li><span>Max:</span> <?php echo $chambre->type_chambre; ?>3 Personnes</li>
-										<li><span>Taille:</span> <?php echo $chambre->taille_chambre; ?> m2</li>
-										<li><span>Heure:</span><?php echo $chambre->prix_heure; ?> FCFA</li>
-										<li><span>Nombre de Lit:</span> <?php echo $chambre->nb_lits; ?></li>
+										<li><span>Max: </span> <?php echo $chambre->nb_lits; ?>  Personnes</li>
+										<li><span>Taille: </span> <?php echo $chambre->taille_chambre; ?> m2</li>
+										<li><span>Heure: </span><?php echo $chambre->prix_heure; ?> FCFA</li>
+										<li><span>Nombre de Lit: </span> <?php echo $chambre->nb_lits; ?></li>
 									</ul>
 									<p class="pt-1"><a href="room-single.php?id=<?php echo $chambre->id_chambre; ?>" class="btn-custom px-3 py-2">Voir les Details <span class="icon-long-arrow-right"></span></a></p>
 								</div>

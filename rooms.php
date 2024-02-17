@@ -32,7 +32,7 @@ require 'client/header.php';
 			?>
 					<div class="col-lg-6">
 						<div class="room-wrap d-md-flex">
-							<a href="#" class="img" style="background-image: url(<?php echo $img[array_rand($img)] ?>);"></a>
+							<a href="#" class="img" style="background-image: url(images/<?php echo $img[array_rand($img)] ?>);"></a>
 							<div class="half left-arrow d-flex align-items-center">
 								<div class="text p-4 p-xl-5 text-center">
 									<p class="star mb-0"><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span></p>

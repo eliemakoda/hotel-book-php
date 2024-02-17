@@ -1,3 +1,7 @@
+<?php
+session_start();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,6 +42,9 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="bookings-admins/show-bookings.php" style="margin-left: 20px;">Bookings</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./service/VoirService.php" style="margin-left: 20px;">Service</a>
           </li>
         </ul>
         <ul class="navbar-nav ml-md-auto d-md-flex">

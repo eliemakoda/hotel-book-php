@@ -68,19 +68,23 @@ class App{
 
     }
     public function se_connecter_admin($requete, $tableau_donnee,$destination){
-        $tab=['email'=>$tableau_donnee['email']];
+        $tab=["email"=>$tableau_donnee["email"]];
         $connection_user=  $this->lien_connexion->prepare($requete);
         $connection_user->execute($tab);
         $resultat= $connection_user->fetch(PDO::FETCH_ASSOC);
         if($connection_user->rowCount()>0)
         {
             if(password_verify($tableau_donnee['password'],$resultat['password']))
-            {
+            { 
+                // id_client`, `nom_client`, `email_client`, `password`, `telephone`, `sexe`, `date_ajout
                 //début des sessions
                 session_start();
-                $_SESSION['email_admin']= $resultat['email'];
-                $_SESSION['nom_admin']= $resultat['nom'];
-                $_SESSION['id_admin']= $resultat['id'];
+                $_SESSION['email_admin']= $resultat['email_admin'];
+                $_SESSION['nom_admin']= $resultat['nom_admin'];
+                $_SESSION['id_admin']= $resultat['id_admin'];
+                $_SESSION['tel_admin']= $resultat['telephone'];
+                $_SESSION['sexe']= $resultat['sexe'];
+                $_SESSION['date_ajout']= $resultat['date_ajout'];
                 header("location: ".$destination."");
             }else {
                 echo "mauvais mot de passe";

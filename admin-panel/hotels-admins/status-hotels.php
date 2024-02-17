@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 require '../../admin/header.php';
 ?>
 <div class="container-fluid">

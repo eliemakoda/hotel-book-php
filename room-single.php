@@ -1,14 +1,22 @@
 <?php
+require "./config/app.php";
+session_start();
+$apps  = new App;
+$id=$_GET["id"];
+$sql= "SELECT * FROM chambre WHERE id_chambre=$id";
+$res=$apps->SelectionnerUn($sql);
+$img = explode(',', $res->images);
+
 require 'client/header.php';
 ?>
 
-    <div class="hero-wrap js-fullheight" style="background-image: url('images/room-1.jpg');" data-stellar-background-ratio="0.5">
+    <div class="hero-wrap js-fullheight" style="background-image: url(./images/<?php echo $img[array_rand($img)] ?>);" data-stellar-background-ratio="0.5">
       <div class="overlay"></div>
       <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-start" data-scrollax-parent="true">
           <div class="col-md-7 ftco-animate">
-          	<h2 class="subheading">Welcome to Vacation Rental</h2>
-          	<h1 class="mb-4">Suite Room</h1>
+          	<h2 class="subheading">Bienvenue à WELL BEING</h2>
+          	<h1 class="mb-4">Chambre No <?php echo $res->num_chambre;?></h1>
             <!-- <p><a href="#" class="btn btn-primary">Learn more</a> <a href="#" class="btn btn-white">Contact us</a></p> -->
           </div>
         </div>
@@ -19,8 +27,61 @@ require 'client/header.php';
     	<div class="container">
 	    	<div class="row justify-content-end">
 	    		<div class="col-lg-4">
+					<?php 
+					if(isset($_SESSION['nom_client'])&&($_SESSION['nom_client'])):
+					?>
 					<form action="#" class="appointment-form" style="margin-top: -568px;">
-						<h3 class="mb-3">Book this room</h3>
+						<h3 class="mb-3">Reserver cette chambre </h3>
+						<div class="row">
+							<div class="col-md-12">
+								<div class="form-group">
+									<input type="text" class="form-control" placeholder="Email" value=<?php echo $_SESSION['email_client'];?> readonly>
+								</div>
+							</div>
+						   
+							<div class="col-md-12">
+								<div class="form-group">
+									<input type="text" class="form-control" placeholder="Full Name" value=<?php echo $_SESSION['nom_client'];?> readonly>
+								</div>
+							</div>
+
+							<div class="col-md-12">
+								<div class="form-group">
+									<input type="text" class="form-control" placeholder="Phone Number" value=<?php echo $_SESSION['tel_client'];?> readonly>
+								</div>
+							</div>
+
+							<div class="col-md-6">
+								<div class="form-group">
+								<div class="input-wrap">
+									<div class="icon"><span class="ion-md-calendar"></span></div>
+										<input type="text" class="form-control appointment_date-check-in" placeholder="Date d'entrer">
+									</div>
+								</div>
+							</div>
+						
+							<div class="col-md-6">
+									<div class="form-group">
+										<div class="icon"><span class="ion-md-calendar"></span></div>
+										<input type="text" class="form-control appointment_date-check-out" placeholder="Date de Sortie">
+									</div>
+							</div>
+							
+						
+						
+							<div class="col-md-12">
+								<div class="form-group">
+									<input type="submit" value="Reserver" class="btn btn-primary py-3 px-4">
+								</div>
+							</div>
+						</div>
+				</form>
+				<?php
+				else:
+				?>
+
+<form action="#" class="appointment-form" style="margin-top: -568px;">
+						<h3 class="mb-3">Reserver cette chambre </h3>
 						<div class="row">
 							<div class="col-md-12">
 								<div class="form-group">
@@ -30,13 +91,13 @@ require 'client/header.php';
 						   
 							<div class="col-md-12">
 								<div class="form-group">
-									<input type="text" class="form-control" placeholder="Full Name">
+									<input type="text" class="form-control" placeholder="Nom Complet">
 								</div>
 							</div>
 
 							<div class="col-md-12">
 								<div class="form-group">
-									<input type="text" class="form-control" placeholder="Phone Number">
+									<input type="text" class="form-control" placeholder="Numero de telephone ">
 								</div>
 							</div>
 
@@ -44,7 +105,7 @@ require 'client/header.php';
 								<div class="form-group">
 								<div class="input-wrap">
 									<div class="icon"><span class="ion-md-calendar"></span></div>
-										<input type="text" class="form-control appointment_date-check-in" placeholder="Check-In">
+										<input type="text" class="form-control appointment_date-check-in" placeholder="Date d'entrée">
 									</div>
 								</div>
 							</div>
@@ -52,7 +113,7 @@ require 'client/header.php';
 							<div class="col-md-6">
 									<div class="form-group">
 										<div class="icon"><span class="ion-md-calendar"></span></div>
-										<input type="text" class="form-control appointment_date-check-out" placeholder="Check-Out">
+										<input type="text" class="form-control appointment_date-check-out" placeholder="Date De Sortie">
 									</div>
 							</div>
 							
@@ -60,11 +121,14 @@ require 'client/header.php';
 						
 							<div class="col-md-12">
 								<div class="form-group">
-									<input type="submit" value="Book and Pay Now" class="btn btn-primary py-3 px-4">
+									<input type="submit" value="Reserver et payer" class="btn btn-primary py-3 px-4">
 								</div>
 							</div>
 						</div>
 				</form>
+				<?php
+				endif;
+				?>
 	    		</div>
 	    	</div>
 	    </div>

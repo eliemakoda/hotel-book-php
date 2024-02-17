@@ -1,4 +1,9 @@
 <?php
+session_start();
+require "../../config/app.php";
+$apps= new App;
+$sql="SELECT * FROM chambre LEFT JOIN hotel on chambre.id_hotel= hotel.id  left JOIN admin on chambre.id_admin=admin.id_admin;";
+$result= $apps->SelectionnerTout($sql);
 require '../../admin/header.php';
 ?>
     <div class="container-fluid">
@@ -7,70 +12,49 @@ require '../../admin/header.php';
         <div class="col">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title mb-4 d-inline">Rooms</h5>
-             <a  href="create-rooms.html" class="btn btn-primary mb-4 text-center float-right">Create Room</a>
+              <h5 class="card-title mb-4 d-inline">chambre</h5>
+             <a  href="create-rooms.php" class="btn btn-primary mb-4 text-center float-right">Creer Une Chambre</a>
               <table class="table">
                 <thead>
                   <tr>
                     <th scope="col">#</th>
-                    <th scope="col">name</th>
-                    <th scope="col">image</th>
-                    <th scope="col">price</th>
-                    <th scope="col">num of persons</th>
-                    <th scope="col">size</th>
-                    <th scope="col">view</th>
-                    <th scope="col">num of beds</th>
-                    <th scope="col">hotel name</th>
-                    <th scope="col">status value</th>
-                    <th scope="col">change status</th>
-                    <th scope="col">delete</th>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Prix/Nuit</th>
+                    <th scope="col">Prix/Heure</th>
+                    <th scope="col">nombre de lits</th>
+                    <th scope="col">Taille</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Ajouté par</th>
+                    <th scope="col">Hotel</th>
+                    <th scope="col">statut</th>
+                    <th scope="col">changer statut</th>
+                    <th scope="col">Supprimer</th>
                   </tr>
                 </thead>
                 <tbody>
+                  <?php
+                  if(isset($result)&&($result!=null)):
+                    $i=0;
+                    foreach($result as $res):
+                  ?>
                   <tr>
-                    <th scope="row">1</th>
-                    <td>Suite Room</td>
-                    <td>image</td>
-                    <td>$100</td>
-                    <td>3</td>
-                    <td>30</td>
-                    <td>Sea View</td>
-                    <td>3</td>
-                    <td>Sheraton</td>
-                    <td>1</td>
-
-                    <td><a href="status.html" class="btn btn-danger  text-center ">status</a></td>
-                    <td><a href="delete-country.html" class="btn btn-danger  text-center ">Delete</a></td>
+                    <th scope="row"><?php echo $i;?></th>
+                    <td><?php echo $res->num_chambre;?></td>
+                    <td><?php echo $res->prix_nuit;?></td>
+                    <td> <?php echo $res->prix_heure;?></td>
+                    <td><?php echo $res->nb_lits;?></td>
+                    <td><?php echo $res->taille_chambre;?> m²</td>
+                    <td> <?php echo $res->type_chambre;?></td>
+                    <td> <?php echo $res->nom_admin;?></td>
+                    <td> <?php echo $res->nom_hotel;?></td>
+                    <td><?php echo $res->statut_chambre;?></td>
+                    <td><a href="status.php?id_statut=<?php echo $res->id_chambre;?>" class="btn btn-danger  text-center ">status</a></td>
+                    <td><a href="delete.php?id_sup=<?php echo $res->id_chambre;?>" class="btn btn-danger  text-center ">Supprimer</a></td>
                   </tr>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Suite Room</td>
-                    <td>image</td>
-                    <td>$100</td>
-                    <td>3</td>
-                    <td>30</td>
-                    <td>Sea View</td>
-                    <td>3</td>
-                    <td>Sheraton</td>
-                    <td>1</td>
-
-                    <td><a href="status.html" class="btn btn-danger  text-center ">status</a></td>
-                    <td><a href="delete-country.html" class="btn btn-danger  text-center ">Delete</a></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Suite Room</td>
-                    <td>image</td>
-                    <td>$100</td>
-                    <td>3</td>
-                    <td>30</td>
-                    <td>Sea View</td>
-                    <td>3</td>
-                    <td>Sheraton</td>
-                    <td>1</td>
-                    <td><a href="status.html" class="btn btn-danger  text-center ">status</a></td>
-                    <td><a href="delete-country.html" class="btn btn-danger  text-center ">Delete</a></td>
-                  </tr>
+             <?php
+             endforeach;
+            endif;
+             ?>
                 </tbody>
               </table> 
             </div>

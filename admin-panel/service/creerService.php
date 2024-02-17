@@ -6,15 +6,10 @@ $apps= new App;
 $hotels= $apps->SelectionnerTout("SELECT * FROM hotel WHERE 1");
 if(isset($_POST["submit"]))
 {
- 
-  $nom= $_POST['name'];
-  $images = $_FILES["images"];
-  $priceNight=$_POST["priceNight"];
-  $priceHours=$_POST["priceHours"];
-  $NbLits=$_POST["NbLits"];
-  $taille=$_POST["taille"];
-  $hotel=$_POST["hotels"];
   $type=$_POST["type"];
+  $description=$_POST["description"];
+  $titre=$_POST['titre'];
+  $hotels=$_POST['hotels'];
   $id_admin = $_SESSION["id_admin"];
   $uploadDirectory ="../../images/";
   $urlsImages = [];
@@ -27,20 +22,16 @@ if(isset($_POST["submit"]))
             $imagePath = $uploadDirectory . $imageName;
             move_uploaded_file($imageTmpName,$imagePath);
     }
-$sql="INSERT INTO chambre(num_chambre, type_chambre, images, prix_nuit,prix_heure,taille_chambre, nb_lits, statut_chambre, id_admin,id_hotel) VALUES(:num_chambre, :type_chambre, :images, :prix_nuit,:prix_heure,:taille_chambre, :nb_lits, :statut_chambre, :id_admin,:id_hotel)";
-$tab= [
-  ":num_chambre"=>$nom, 
-  ":type_chambre"=>$type,
-   ":images"=>implode(',',$urlsImages),
-    ":prix_nuit"=>$priceNight,
-    ":prix_heure"=>$priceHours,
-    ":taille_chambre"=>$taille,
-     ":nb_lits"=>$NbLits, 
-     ":statut_chambre"=>$statut,
-      ":id_admin"=>$id_admin,
-      ":id_hotel"=>$hotel
+$sql="INSERT INTO service(type_service, images_service, description_service, titre, id_hotel, id_admin) VALUES(:type_service, :images_service, :description_service, :titre, :id_hotel, :id_admin)";
+$tab=[
+  ":type_service"=>$type,
+   ":images_service"=>implode(',',$urlsImages),
+    ":description_service"=>$description,
+     ":titre"=>$titre,
+      ":id_hotel"=>$hotels,
+       ":id_admin"=>$id_admin
 ];
-$dest="./show-rooms.php";
+$dest="VoirService.php";
 $apps->inserer($sql,$tab,$dest);
   }
 }
@@ -55,10 +46,12 @@ require '../../admin/header.php';
               <?php
               if(isset($hotels)&& ($hotels!=null)):
               ?>
-          <form method="POST" action="./create-rooms.php" enctype="multipart/form-data">
+              <!-- INSERT INTO `service`(`id_service`, `type_service`, `images_service`, `description_service`, `titre`, `id_hotel`, `id_admin`) 
+              VALUES ('[value-1]','[value-2]','[value-3]','[value-4]','[value-5]','[value-6]','[value-7]') -->
+          <form method="POST" action="./creerService.php" enctype="multipart/form-data">
                 <!-- Email input -->
                 <div class="form-outline mb-4 mt-4">
-                  <input type="text" name="name" id="form2Example1" class="form-control" placeholder="Numero de la chambre" />
+                  <input type="text" name="type" id="form2Example1" class="form-control" placeholder="Type du service (domicile, Pas" />
                  
                 </div>
                 <div class="form-outline mb-4 mt-4">
@@ -66,25 +59,15 @@ require '../../admin/header.php';
                  
                 </div>  
                 <div class="form-outline mb-4 mt-4">
-                  <input type="text" name="priceNight" id="form2Example1" class="form-control" placeholder="Prix par Nuitée" />
-                 
+                  <label for="description">Description</label>
+                  <!-- <input type="text" name="priceNight" id="form2Example1" class="form-control" placeholder="Prix par Nuitée" /> -->
+                 <textarea name="description" id="description form2Example1" class="form2Example1" cols="30" rows="10"></textarea>
                 </div> 
                  <div class="form-outline mb-4 mt-4">
-                  <input type="text" name="priceHours" id="form2Example1" class="form-control" placeholder="Prix Par Heure" />
+                  <input type="text" name="titre" id="form2Example1" class="form-control" placeholder="Titre Service" />
                  
                 </div> 
-                <div class="form-outline mb-4 mt-4">
-                  <input type="number" name="NbLits" id="form2Example1" class="form-control" placeholder="Nombre de Lit" />
-                 
-                </div> 
-                <div class="form-outline mb-4 mt-4">
-                  <input type="number" name="taille" id="form2Example1" class="form-control" placeholder="Taille de La chambre " />
-                 
-                </div> 
-                <div class="form-outline mb-4 mt-4">
-                  <input type="text" name="type" id="form2Example1" class="form-control" placeholder="type: classique / VIP " />
-                 
-                </div> 
+             
                <select class="form-control" name="hotels">
                 <?php 
                 foreach($hotels as $hotel):
@@ -100,7 +83,7 @@ require '../../admin/header.php';
                <br>
 
                 <!-- Submit button -->
-                <button type="submit" name="submit" class="btn btn-primary  mb-4 text-center">create</button>
+                <button type="submit" name="submit" class="btn btn-primary  mb-4 text-center">Creer</button>
 
           
               </form>
