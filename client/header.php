@@ -27,7 +27,9 @@
 			<div class="container">
 				<div class="row justify-content-between">
 						<div class="col d-flex align-items-center">
-							<p class="mb-0 phone"><span class="mailus">Phone no:</span> <a href="#">+00 1234 567</a> or <span class="mailus">email us:</span> <a href="#">emailsample@email.com</a></p>
+							<p class="mb-0 phone"><span class="mailus">Numero de Telephone: </span> <a href="#">+237 676 86 74 97</a> ou <span class="mailus">email :</span> <a href="#">clementmekontso2@gmail.com</a>
+						<a href="./admin-panel/"> admin</a>
+						</p>
 						</div>
 						<div class="col d-flex justify-content-end">
 							<div class="social-media">
@@ -44,7 +46,7 @@
 		</div>
 		<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 	    <div class="container">
-	    	<a class="navbar-brand" href="index.php">Vacation<span>Rental</span></a>
+	    	<a class="navbar-brand" href="index.php">WELL<span>BEING</span></a>
 	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 	        <span class="fa fa-bars"></span> Menu
 	      </button>

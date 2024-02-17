@@ -2,8 +2,8 @@
 require "./config/app.php";
 session_start();
 $apps  = new App;
-// $id=$_GET['id'];
-$sql_chambre = "SELECT * FROM chambre WHERE 1";
+$id=$_GET['id'];
+$sql_chambre = "SELECT * FROM chambre WHERE id_hotel=$id";
 $chambres = $apps->SelectionnerTout($sql_chambre);
 require 'client/header.php';
 ?>
