@@ -23,26 +23,26 @@
       <div class="collapse navbar-collapse" id="navbarText">
         <ul class="navbar-nav side-nav" >
           <li class="nav-item">
-            <a class="nav-link" style="margin-left: 20px;" href="../index.html">Home
+            <a class="nav-link" style="margin-left: 20px;" href="../index.php">Home
               <span class="sr-only">(current)</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="admins.html" style="margin-left: 20px;">Admins</a>
+            <a class="nav-link" href="admins.php" style="margin-left: 20px;">Admins</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../hotels-admins/show-hotels.html" style="margin-left: 20px;">Hotels</a>
+            <a class="nav-link" href="../hotels-admins/show-hotels.php" style="margin-left: 20px;">Hotels</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../rooms-admins/show-rooms.html" style="margin-left: 20px;">Rooms</a>
+            <a class="nav-link" href="../rooms-admins/show-rooms.php" style="margin-left: 20px;">Rooms</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../bookings-admins/show-bookings.html" style="margin-left: 20px;">Bookings</a>
+            <a class="nav-link" href="../bookings-admins/show-bookings.php" style="margin-left: 20px;">Bookings</a>
           </li>
         </ul>
         <ul class="navbar-nav ml-md-auto d-md-flex">
           <li class="nav-item">
-            <a class="nav-link" href="../index.html">Home
+            <a class="nav-link" href="../index.php">Home
               <span class="sr-only">(current)</span>
             </a>
           </li>
